@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=AVLNode
+comment0.text=\r\n\ AVL\ Node\ class\r\n\r\n\ @author\ Nikita\ Gerasimov\r\n\ @version\ 2018-06-07\r\n
+comment1.params=data
+comment1.target=AVLNode(int)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Node\r\n
+numComments=2

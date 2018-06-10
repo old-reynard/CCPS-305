@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Vertex
+comment0.text=\r\n\ class\ Vertex.\r\n\ \r\n\ @author\ Nikita\ Gerasimov\r\n\ @version\ 2018-06-10\r\n
+comment1.params=v
+comment1.target=Vertex(int)
+comment2.params=
+comment2.target=int\ getVertex()
+comment3.params=obj
+comment3.target=boolean\ equals(java.lang.Object)
+numComments=4

@@ -29,16 +29,16 @@ public class BSTree
      * @return the new node
      */
     private static Node add(Node current, int value) {                   
-        if (current == null) {                                          // if the current node is empty, the node will be inserted here
+        if (current == null) {                                          
             return new Node(value);
         } 
 
-        if (value < current.data) {                                     // otherwise, if the given value is less than data from the current node,
-            current.left = add(current.left, value);                    // the tree will be traversed to the left
-        } else if (value > current.data) {                              // otherwise, if the given value is greater than data from the current node,
-            current.right = add(current.right, value);                  // the tree will be traversed to the right
-        } else {                                                        // otherwise, that is, if the the given value is equal to node data,
-            return current;                                             // this is where the node has to be added
+        if (value < current.data) {                                     
+            current.left = add(current.left, value);                    
+        } else if (value > current.data) {                              
+            current.right = add(current.right, value);                  
+        } else {                                                        
+            return current;                                             
         }
         return current;
     }
@@ -71,7 +71,7 @@ public class BSTree
         if (current == null) {
             return 0;
         } else {
-            return 1 + size(current.left) + size(current.right);        // recursively add together all the nodes in the tree
+            return 1 + size(current.left) + size(current.right);        
         }
     }
 
@@ -86,24 +86,24 @@ public class BSTree
      * Decides how to remove the given node
      * @return the node that needs to be removed
      */
-    private Node remove(Node current, int data) {                       // what happens in the remove method under the hood
-        if (current == null) {                                          // if the tree is empty, nothing to delete
+    private Node remove(Node current, int data) {                       
+        if (current == null) {                                          
             return null;
-        } else if (current.data > data) {                               // it is necessary to traverse the tree until the node is found
+        } else if (current.data > data) {                               
             current.left = remove(current.left, data);
         } else if (current.data < data) {
             current.right = remove(current.right, data);
-        } else {                                                        // when this node is reached, this is the node that needs deleting
-            if (current.right == null) {                                // this node has no right child, so return its left child
-                return current.left;                                    // otherwise, this node has no left child, so return its right child
+        } else {                                                        
+            if (current.right == null) {                                
+                return current.left;                                    
             } else if (current.left == null) {
                 return current.right;
-            } else {                                                    // the node has both children, traversing to find the inOrder successor
-                current.data = getMinimum(current.right);               // after deletion, this node becomes the smallest value on the right
+            } else {                                                    
+                current.data = getMinimum(current.right);               
                 current.right = remove(current.right, current.data);    
             }
         }
-        return current;                                                 // if nothing else fits, return the original node
+        return current;                                                 
     }
 
     /**
@@ -111,9 +111,9 @@ public class BSTree
      * @return the minimum value
      */
     private int getMinimum(Node current) {                              
-        if (current.left == null) {                                     // if there is no left child of the current node,
-        return current.data;                                            // this is the minimum
-        } else {                                                        // otherwise, recursevily traverse to the left
+        if (current.left == null) {                                     
+        return current.data;                                            
+        } else {                                                        
             return getMinimum(current.left);
         }
     }

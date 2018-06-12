@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Recursion
+comment0.text=\r\n\ class\ Recursion\r\n\r\n\ @author\ Nikita\ Gerasimov\r\n\ @version\ 2018-06-11\r\n
+comment1.params=a\ b
+comment1.target=int\ gcd(int,\ int)
+comment2.params=n
+comment2.target=int\ fibonacci(int)
+comment3.params=n
+comment3.target=void\ printFibonacci(int)
+comment4.params=s
+comment4.target=boolean\ isPalindrome(java.lang.String)
+comment5.params=s
+comment5.target=java.lang.String\ prepare(java.lang.String)
+comment6.params=s
+comment6.target=boolean\ isPalindromeRecursive(java.lang.String)
+comment7.params=
+comment7.target=void\ tester()
+numComments=8

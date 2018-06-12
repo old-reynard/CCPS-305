@@ -27,21 +27,21 @@ public class AVLTree {
      * @return the node that will be added to the tree
      */
     private static AVLNode add(AVLNode current, int value) {
-        if (current == null) {                                          // if the current node is empty, the node will be inserted here
+        if (current == null) {                                           
             return new AVLNode(value);
         } 
 
-        if (value < current.data) {                                     // otherwise, if the given value is less than data from the current node,
-            current.left = add(current.left, value);                    // the tree will be traversed to the left
-        } else if (value > current.data) {                              // otherwise, if the given value is greater than data from the current node,
-            current.right = add(current.right, value);                  // the tree will be traversed to the right
-        } else {                                                        // otherwise, that is, if the the given value is equal to node data,
+        if (value < current.data) {                                      
+            current.left = add(current.left, value);                     
+        } else if (value > current.data) {                               
+            current.right = add(current.right, value);                   
+        } else {                                                         
             current.data = value;
-            return current;                                             // this is where the node has to be added
+            return current;                                              
         }
 
-        current.height = height(current);                               // update the height of the current node
-        return balance(current);                                        // balance the tree after addition
+        current.height = height(current);                                
+        return balance(current);                                        
         // return current;
     }
 
@@ -50,15 +50,15 @@ public class AVLTree {
      * @return balanced subtree
      */
     private static AVLNode balance(AVLNode node) {
-        if (getBalance(node) < - 1) {                                   // R case: balance factor of the node is less than -1
-            if (getBalance(node.right) > 0) {                           // LR case: balance factor of the right child is greater than 0
-                node.right = rotateRight(node.right);                   // rotate right around the right child
-            }                                                           // then rotate left
+        if (getBalance(node) < - 1) {                                   
+            if (getBalance(node.right) > 0) {                           
+                node.right = rotateRight(node.right);                   
+            }                                                           
             node = rotateLeft(node);                                    
-        } else if (getBalance(node) > 1) {                              // L case: balance factor is greater than 1
-            if (getBalance(node.left) < 0) {                            // RL case: balance factor of the left child is less than 0
-                node.left = rotateLeft(node.left);                      // rotate left around the left child 
-            }                                                           // then rotate right
+        } else if (getBalance(node) > 1) {                              
+            if (getBalance(node.left) < 0) {                            
+                node.left = rotateLeft(node.left);                      
+            }                                                          
             node = rotateRight(node);
         }
         return node;
@@ -76,19 +76,19 @@ public class AVLTree {
      * @return the udpated subtree
      */
     private static AVLNode remove(AVLNode current, int data) {
-        if (current == null) {                                          // if the tree is empty, nothing to delete
+        if (current == null) {                                          
             return null;
-        } else if (current.data > data) {                               // it is necessary to traverse the tree until the node is found
+        } else if (current.data > data) {                                
             current.left = remove(current.left, data);
         } else if (current.data < data) {
             current.right = remove(current.right, data);
-        } else {                                                        // when this node is reached, this is the node that needs deleting
-            if (current.right == null) {                                // this node has no right child, so return its left child
-                return current.left;                                    // otherwise, this node has no left child, so return its right child
+        } else {                                                         
+            if (current.right == null) {                                 
+                return current.left;                                      
             } else if (current.left == null) {
                 return current.right;
-            } else {                                                    // the node has both children, traversing to find the inOrder successor
-                current.data = getMinimum(current.right);               // after deletion, this node becomes the smallest value on the right
+            } else {                                                     
+                current.data = getMinimum(current.right);                
                 current.right = remove(current.right, current.data);    
             }
         }
@@ -110,11 +110,11 @@ public class AVLTree {
      * @return the left rotated subtree
      */
     private static AVLNode rotateLeft(AVLNode current) {
-        AVLNode detached = current.right;                               // the node's right child 
-        current.right = detached.left;                                  // attach the right child's left subtree to the old parent
-        detached.left = current;                                        // attach the old parent to the former right child 
+        AVLNode detached = current.right;                               
+        current.right = detached.left;                                  
+        detached.left = current;                                         
 
-        current.height = height(current);                               // update heights
+        current.height = height(current);                               
         detached.height = height(detached);
 
         return detached;
@@ -125,11 +125,11 @@ public class AVLTree {
      * @return the right rotated subtree
      */
     private static AVLNode rotateRight(AVLNode current) {
-        AVLNode detached = current.left;                                // the node's left child 
-        current.left = detached.right;                                  // attach the left child's right subtree to the old parent
-        detached.right = current;                                       // attach the old parent to the former left child 
+        AVLNode detached = current.left;                                 
+        current.left = detached.right;                                    
+        detached.right = current;                                         
 
-        current.height = height(current);                               // update heights
+        current.height = height(current);                               
         detached.height = height(detached);
 
         return detached;
@@ -154,7 +154,7 @@ public class AVLTree {
         if (current == null) {
             return 0;
         } else {
-            return 1 + size(current.left) + size(current.right);        // recursively add together all the nodes in the tree
+            return 1 + size(current.left) + size(current.right);        
         }
     }
 
@@ -220,9 +220,9 @@ public class AVLTree {
      * @return the minimum value
      */
     private static int getMinimum(AVLNode current) {                              
-        if (current.left == null) {                                     // if there is no left child of the current node,
-            return current.data;                                        // this is the minimum
-        } else {                                                        // otherwise, recursevily traverse to the left
+        if (current.left == null) {                                      
+            return current.data;                                        
+        } else {                                                         
             return getMinimum(current.left);
         }
     }

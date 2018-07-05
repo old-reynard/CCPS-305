@@ -232,7 +232,7 @@ public class AVLTree {
      */
     public static void test() {
         AVLTree tree = new AVLTree();
-        int[] added = {45, 20, 70, 10, 35, 60, 90, 30, 40, 50, 80, 99};
+        int[] added = {14, 17, 11, 7, 53, 4, 13, 12, 8};
         for (int i: added) {
             System.out.println("Adding " + i);
             tree.add(i);
@@ -242,7 +242,7 @@ public class AVLTree {
         System.out.println("The root now is " + getRoot().data);
         print(root);
         
-        int[] removed = {10, 30, 40, 35, 70, 90, 99};
+        int[] removed = {53, 11, 8};
         for(int n: removed) {
             System.out.println("Removing " + n);
             tree.remove(n);
